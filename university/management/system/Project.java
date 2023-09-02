@@ -78,10 +78,12 @@ public class Project extends JFrame implements ActionListener{
         //Exams
         JMenu exam = new JMenu("Examination");
         mb.add(exam);
-        JMenuItem examdetails = new JMenuItem("Examination Results"); 
+        JMenuItem examdetails = new JMenuItem("Examination Results");
+        examdetails.addActionListener(this);
         exam.add(examdetails);
         
         JMenuItem entermarks = new JMenuItem("Enter Marks"); 
+        entermarks.addActionListener(this);
         exam.add(entermarks);
         
         //UpdateInfo
@@ -201,6 +203,16 @@ public class Project extends JFrame implements ActionListener{
        else if(msg.equals("Update Students Details"))
        {
            new UpdateStudent();
+       }
+       
+        else if(msg.equals("Enter Marks"))
+       {
+           new EnterMarks();
+       }
+       
+       else if(msg.equals("Examination Results"))
+       {
+           new ExaminationDetails();
        }
        
        
