@@ -6,22 +6,22 @@ import com.toedter.calendar.JDateChooser;
 import java.awt.event.*;
 
 
-public class AddStudent extends JFrame implements ActionListener{
+public class AddEmploye extends JFrame implements ActionListener{
     
-    JTextField tfnameb,tfnamee, tffname,tfmname, tfid, tfadress, tfphone,tfemail, tfdesignation, empid,tfquota,tfblood,tfguardian;
+    JTextField tfnameb,tfnamee, tffname,tfmname, tfid, tfadress, tfphone,tfemail, tfdesignation, empid,tfquota,tfblood;
     JDateChooser dcdob;
     JComboBox cbcourse,cbdepartment;
     JButton submit, cancel;
     JRadioButton male,female,other,married,unmarried;
     
-    AddStudent()
+    AddEmploye()
     {
         setSize(900,650);
         setLocation(300,30);
         
         setLayout(null);
         
-        JLabel heading = new JLabel("Add New Student");
+        JLabel heading = new JLabel("New Employee Details");
         heading.setBounds(310, 30, 500, 50);
         heading.setFont(new Font("serif", Font.BOLD,30));
         add(heading);
@@ -66,7 +66,7 @@ public class AddStudent extends JFrame implements ActionListener{
         tffname.setBounds(600, 140, 150, 30);
         add(tffname);
         
-        JLabel lblid = new JLabel("Student ID");
+        JLabel lblid = new JLabel("Employee ID");
         lblid.setBounds(50, 180, 200, 30);
         lblid.setFont(new Font("serif", Font.BOLD,20));
         add(lblid);
@@ -167,7 +167,7 @@ public class AddStudent extends JFrame implements ActionListener{
      
         
         
-        JLabel lblcourse = new JLabel("Course");
+        JLabel lblcourse = new JLabel("Qualification");
         lblcourse.setBounds(400, 300, 200, 30);
         lblcourse.setFont(new Font("serif", Font.BOLD,20));
         add(lblcourse);
@@ -188,15 +188,15 @@ public class AddStudent extends JFrame implements ActionListener{
         cbdepartment.setBounds(200,340,150,30);
         add(cbdepartment);
         
-          JLabel lblguardian = new JLabel("Guardian No");
-        lblguardian.setBounds(400, 340, 200, 30);
-        lblguardian.setFont(new Font("serif", Font.BOLD,20));
-        add(lblguardian);
+          JLabel lbldesignation = new JLabel("Designation");
+        lbldesignation.setBounds(400, 340, 200, 30);
+        lbldesignation.setFont(new Font("serif", Font.BOLD,20));
+        add(lbldesignation);
         
         
-        tfguardian = new JTextField();
-        tfguardian.setBounds(600,340, 150, 30);
-        add(tfguardian);
+        tfdesignation = new JTextField();
+        tfdesignation.setBounds(600,340, 150, 30);
+        add(tfdesignation);
         
         
          JLabel lblquota = new JLabel("Quota");
@@ -254,7 +254,7 @@ public class AddStudent extends JFrame implements ActionListener{
              String namee = tfnamee.getText();
              String mname = tfmname.getText();
             String fname = tffname.getText();
-            String sid = empid.getText();
+            String emp = empid.getText();
             String dob = ((JTextField) dcdob.getDateEditor().getUiComponent()).getText();
             
              String gender = null;
@@ -287,19 +287,19 @@ public class AddStudent extends JFrame implements ActionListener{
             
             String education =(String) cbcourse.getSelectedItem();
             String department = (String) cbdepartment.getSelectedItem();
-            String guardian = tfguardian.getText();
+            String designation = tfdesignation.getText();
             String quota = tfquota.getText();
             String blood = tfblood.getText();
             
             
             
             try{
-                String query = "insert into student values('"+nameb+"','"+namee+"', '"+mname+"','"+fname+"','"+sid+"','"+dob+"','"+gender+"','"+adress+"','"+phone+"','"+email+"','"+marital+"','"+education+"','"+department+"','"+guardian+"','"+quota+"','"+blood+"')";
+                String query = "insert into employee values('"+nameb+"','"+namee+"', '"+mname+"','"+fname+"','"+emp+"','"+dob+"','"+gender+"','"+adress+"','"+phone+"','"+email+"','"+marital+"','"+education+"','"+department+"','"+designation+"','"+quota+"','"+blood+"')";
                 
                 Connect con= new Connect();
                 con.s.executeUpdate(query);
                 
-                JOptionPane.showMessageDialog(null, "Student Details Inserted Successfully");
+                JOptionPane.showMessageDialog(null, "Employee Details Inserted Successfully");
                 
                 setVisible(false);
             } catch (Exception c){
@@ -315,7 +315,7 @@ public class AddStudent extends JFrame implements ActionListener{
     }
     
     public static void main(String[] args) {
-        new AddStudent();
+        new AddEmploye();
     }
 
     

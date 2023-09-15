@@ -31,7 +31,7 @@ public class ExaminationDetails extends JFrame implements ActionListener {
         add(heading);
         
         
-        search = new JTextField("Enter Roll");
+        search = new JTextField("");
         search.setBounds(80, 90, 200, 30);
         search.setFont(new Font("serif", Font.PLAIN, 18));
         add(search);
@@ -73,7 +73,7 @@ public class ExaminationDetails extends JFrame implements ActionListener {
           table.addMouseListener(new MouseAdapter() {
               public void mouseClicked(MouseEvent me){
                   int row = table.getSelectedRow();
-                  search.setText(table.getModel().getValueAt(row, 2).toString());
+                  search.setText(table.getModel().getValueAt(row, 4).toString());
               }
           });
         

@@ -6,7 +6,7 @@ import java.awt.*;
 import java.awt.event.*;
 import java.sql.ResultSet;
 
-public class UpdateStudent extends JFrame implements ActionListener {
+public class UpdateEmployee extends JFrame implements ActionListener {
 
     JTextField tfnameb,tfnamee, tfadress, tfphone,tfemail, tfdesignation, tfquota,tfblood,tfguardian,cbcourse,cbdepartment;
     JDateChooser dcdob;
@@ -16,18 +16,18 @@ public class UpdateStudent extends JFrame implements ActionListener {
     Choice crollno;
     JLabel labelrollno,tfmname, tffname, tfid,empid;
 
-    UpdateStudent() {
+    UpdateEmployee() {
         setSize(900, 650);
         setLocation(300, 30);
 
         setLayout(null);
 
-        JLabel heading = new JLabel("Update Student Details");
+        JLabel heading = new JLabel("Update Employee Details");
         heading.setBounds(310, 0, 500, 50);
         heading.setFont(new Font("serif", Font.BOLD, 30));
         add(heading);
 
-        JLabel lblrollnumber = new JLabel("Select Student ID");
+        JLabel lblrollnumber = new JLabel("Select Employee ID");
         lblrollnumber.setBounds(50, 70, 200, 20);
         lblrollnumber.setFont(new Font("serif", Font.PLAIN, 18));
         add(lblrollnumber);
@@ -38,9 +38,9 @@ public class UpdateStudent extends JFrame implements ActionListener {
 
         try {
             Connect c = new Connect();
-            ResultSet rs = c.s.executeQuery("select * from student");
+            ResultSet rs = c.s.executeQuery("select * from employee");
             while (rs.next()) {
-                crollno.add(rs.getString("sid"));
+                crollno.add(rs.getString("emp"));
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -86,7 +86,7 @@ public class UpdateStudent extends JFrame implements ActionListener {
         tffname.setBounds(600, 140, 150, 30);
         add(tffname);
         
-        JLabel lblid = new JLabel("Student ID");
+        JLabel lblid = new JLabel("Employee ID");
         lblid.setBounds(50, 180, 200, 30);
         lblid.setFont(new Font("serif", Font.BOLD,20));
         add(lblid);
@@ -187,7 +187,7 @@ public class UpdateStudent extends JFrame implements ActionListener {
      
         
         
-        JLabel lblcourse = new JLabel("Course");
+        JLabel lblcourse = new JLabel("Education");
         lblcourse.setBounds(400, 300, 200, 30);
         lblcourse.setFont(new Font("serif", Font.BOLD,20));
         add(lblcourse);
@@ -208,17 +208,18 @@ public class UpdateStudent extends JFrame implements ActionListener {
         cbdepartment.setBounds(200,340,150,30);
         add(cbdepartment);
         
-          JLabel lblguardian = new JLabel("Guardian No");
-        lblguardian.setBounds(400, 340, 200, 30);
-        lblguardian.setFont(new Font("serif", Font.BOLD,20));
-        add(lblguardian);
+          JLabel lbldesignation = new JLabel("Designation");
+        lbldesignation.setBounds(400, 340, 200, 30);
+        lbldesignation.setFont(new Font("serif", Font.BOLD,20));
+        add(lbldesignation);
         
         
-        tfguardian = new JTextField();
-        tfguardian.setBounds(600,340, 150, 30);
-        add(tfguardian);
+        tfdesignation = new JTextField();
+        tfdesignation.setBounds(600,340, 150, 30);
+        add(tfdesignation);
         
         
+       
          JLabel lblquota = new JLabel("Quota");
         lblquota.setBounds(50, 380, 200, 30);
         lblquota.setFont(new Font("serif", Font.BOLD,20));
@@ -241,14 +242,14 @@ public class UpdateStudent extends JFrame implements ActionListener {
 
         try {
             Connect c = new Connect();
-            String query = "select * from student where sid = '" + crollno.getSelectedItem() + "'";
+            String query = "select * from employee where emp = '" + crollno.getSelectedItem() + "'";
             ResultSet rs = c.s.executeQuery(query);
             while (rs.next()) {
                 tfnameb.setText(rs.getString("nameb"));
                 tfnamee.setText(rs.getString("namee"));
                 tfmname.setText(rs.getString("mname"));
                 tffname.setText(rs.getString("fname"));
-                empid.setText(rs.getString("sid"));
+                empid.setText(rs.getString("emp"));
                labeldob.setText(rs.getString("dob"));
                
                
@@ -281,7 +282,7 @@ public class UpdateStudent extends JFrame implements ActionListener {
                 
                 cbcourse.setText(rs.getString("education"));
                 cbdepartment.setText(rs.getString("department"));
-                tfguardian.setText(rs.getString("guardian"));
+                tfdesignation.setText(rs.getString("designation"));
                tfquota.setText(rs.getString("quota"));
                 tfblood.setText(rs.getString("boold"));
                 
@@ -296,14 +297,14 @@ public class UpdateStudent extends JFrame implements ActionListener {
 
                 try {
                     Connect c = new Connect();
-                    String query = "select * from student where sid = '" + crollno.getSelectedItem() + "'";
+                    String query = "select * from employee where emp = '" + crollno.getSelectedItem() + "'";
                     ResultSet rs = c.s.executeQuery(query);
                     while (rs.next()) {
                          tfnameb.setText(rs.getString("nameb"));
                 tfnamee.setText(rs.getString("namee"));
                 tfmname.setText(rs.getString("mname"));
                 tffname.setText(rs.getString("fname"));
-                empid.setText(rs.getString("sid"));
+                empid.setText(rs.getString("emp"));
                labeldob.setText(rs.getString("dob"));
                
                
@@ -336,7 +337,7 @@ public class UpdateStudent extends JFrame implements ActionListener {
                 
                 cbcourse.setText(rs.getString("education"));
                 cbdepartment.setText(rs.getString("department"));
-                tfguardian.setText(rs.getString("guardian"));
+                tfdesignation.setText(rs.getString("designation"));
                tfquota.setText(rs.getString("quota"));
                 tfblood.setText(rs.getString("boold"));
                         
@@ -368,7 +369,7 @@ public class UpdateStudent extends JFrame implements ActionListener {
 
         setVisible(true);
 
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        //setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
    @Override
@@ -384,12 +385,12 @@ public class UpdateStudent extends JFrame implements ActionListener {
             String department = cbdepartment.getText();
             
             try{
-                String query = "update student set adress='"+adress+"',phone='"+phone+"',email='"+email+"',education='"+course+"',department='"+department+"' where sid='"+rollno+"'";
+                String query = "update employee set adress='"+adress+"',phone='"+phone+"',email='"+email+"',education='"+course+"',department='"+department+"' where emp='"+rollno+"'";
                 
                 Connect con= new Connect();
                 con.s.executeUpdate(query);
                 
-                JOptionPane.showMessageDialog(null, "Student Details Update Successfully");
+                JOptionPane.showMessageDialog(null, "Employee Details Update Successfully");
                 
                 setVisible(false);
             } catch (Exception c){
@@ -403,7 +404,7 @@ public class UpdateStudent extends JFrame implements ActionListener {
     }
 
     public static void main(String[] args) {
-        new UpdateStudent();
+        new UpdateEmployee();
     }
 
 }

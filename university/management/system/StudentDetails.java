@@ -18,7 +18,7 @@ public class StudentDetails extends JFrame implements ActionListener{
         getContentPane().setBackground(Color.WHITE);
         setLayout(null);
         
-        JLabel heading = new JLabel("Search by Roll Number");
+        JLabel heading = new JLabel("Search by Student ID");
         heading.setBounds(20, 20, 150, 20);
         add(heading);
         
@@ -32,7 +32,7 @@ public class StudentDetails extends JFrame implements ActionListener{
             ResultSet rs = c.s.executeQuery("select * from student");
             while(rs.next())
             {
-                crollno.add(rs.getString("rollno"));
+                crollno.add(rs.getString("sid"));
             }
         } catch (Exception e){
             e.printStackTrace();
@@ -91,7 +91,7 @@ public class StudentDetails extends JFrame implements ActionListener{
         setVisible(true);
         
         
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        //setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
             
     
@@ -100,7 +100,7 @@ public class StudentDetails extends JFrame implements ActionListener{
         
         if(ae.getSource()==search)
         {
-            String query = "select * from student where rollno = '"+crollno.getSelectedItem()+"'";
+            String query = "select * from student where sid = '"+crollno.getSelectedItem()+"'";
              try{
                 Connect c = new Connect();
                 ResultSet rs = c.s.executeQuery(query);
@@ -129,7 +129,7 @@ public class StudentDetails extends JFrame implements ActionListener{
         else if(ae.getSource()==update)
         {
              setVisible(false);
-            //new UpdateStudent();
+            new UpdateStudent();
         }
         else if(ae.getSource()==cancel)
         {

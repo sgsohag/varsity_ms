@@ -20,7 +20,7 @@ public class Login extends JFrame implements ActionListener{
     
     JButton login, cancel;
     JTextField tfusername,tfpassword; 
-    
+    int count=0;
     Login()
     {
         getContentPane().setBackground(Color.white);
@@ -94,18 +94,120 @@ public class Login extends JFrame implements ActionListener{
                
                if(rs.next())
                {
-                   setVisible(false);
-                   new Project();
+                   count = 1;
+                   //setVisible(false);
+                   //new Project();
                }
-               else{
-                  JOptionPane.showMessageDialog(null, "Invalid usename or password");
-                  setVisible(false);
-               }
+               //else{
+                 // JOptionPane.showMessageDialog(null, "Invalid usename or password");
+                 // setVisible(false);
+               //}
                c.s.close();
                
             } catch (Exception c){
                 c.printStackTrace();
             }
+            
+            
+             String query1 = "select * from teacherlogin where username='"+username+"' and password='"+password+"'";
+            
+            try{
+                Connect c= new Connect();
+               ResultSet rs = c.s.executeQuery(query1);
+               
+               if(rs.next())
+               {
+                   count = 2;
+                   //setVisible(false);
+                   //new Teacher();
+               }
+              // else{
+                  //JOptionPane.showMessageDialog(null, "Invalid usename or password");
+                  //setVisible(false);
+              // }
+               c.s.close();
+               
+            } catch (Exception c){
+                c.printStackTrace();
+            }
+            
+            String query2 = "select * from banklogin where username='"+username+"' and password='"+password+"'";
+            
+            try{
+                Connect c= new Connect();
+               ResultSet rs = c.s.executeQuery(query2);
+               
+               if(rs.next())
+               {
+                   count = 3;
+                   //setVisible(false);
+                   //new Teacher();
+               }
+              // else{
+                  //JOptionPane.showMessageDialog(null, "Invalid usename or password");
+                  //setVisible(false);
+              // }
+               c.s.close();
+               
+            } catch (Exception c){
+                c.printStackTrace();
+            }
+            
+            
+            String query3 = "select * from librarylogin where username='"+username+"' and password='"+password+"'";
+            
+            try{
+                Connect c= new Connect();
+               ResultSet rs = c.s.executeQuery(query3);
+               
+               if(rs.next())
+               {
+                   count = 4;
+                   //setVisible(false);
+                   //new Teacher();
+               }
+              // else{
+                  //JOptionPane.showMessageDialog(null, "Invalid usename or password");
+                  //setVisible(false);
+              // }
+               c.s.close();
+               
+            } catch (Exception c){
+                c.printStackTrace();
+            }
+            
+            
+            if(count==1)
+            {
+                setVisible(false);
+                   new Project();
+            }
+            
+            else if(count==2)
+            {
+                setVisible(false);
+                   new Teacher();
+            }
+            
+            else if(count==3)
+            {
+                setVisible(false);
+                   new Bank();
+            }
+            
+            else if(count==4)
+            {
+                setVisible(false);
+                   new Library();
+            }
+            else
+            {
+                JOptionPane.showMessageDialog(null, "Invalid usename or password");
+                  setVisible(false);
+            }
+            
+            
+            
         }
         else if(e.getSource() == cancel)
         {

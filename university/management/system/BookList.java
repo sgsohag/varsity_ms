@@ -7,42 +7,44 @@ import java.sql.*;
 import net.proteanit.sql.DbUtils;
 import java.awt.event.*;
 
-public class TeacherDetails extends JFrame implements ActionListener{
+public class BookList extends JFrame implements ActionListener{
     
-    Choice tid;
+    Choice crollno;
     JTable table;
     JButton search, print,update,add,cancel;
     
-    TeacherDetails()
+   BookList()
     {
         getContentPane().setBackground(Color.WHITE);
         setLayout(null);
         
-        JLabel heading = new JLabel("Search by Teacher ID");
+        
+        JLabel heading = new JLabel("Search by Book Name");
         heading.setBounds(20, 20, 150, 20);
         add(heading);
         
         
-        tid = new Choice();
-        tid.setBounds(180, 20, 150, 20);
-        add(tid);
+        crollno = new Choice();
+        crollno.setBounds(180, 20, 150, 20);
+        add(crollno);
         
         try {
             Connect c = new Connect();
-            ResultSet rs = c.s.executeQuery("select * from teacher");
+            ResultSet rs = c.s.executeQuery("select * from book");
             while(rs.next())
             {
-                tid.add(rs.getString("tid"));
+                crollno.add(rs.getString("Book_Name"));
             }
         } catch (Exception e){
             e.printStackTrace();
         }
+       
         
         table = new JTable();
         
         try {
             Connect c = new Connect();
-            ResultSet rs = c.s.executeQuery("select * from teacher");
+            ResultSet rs = c.s.executeQuery("select * from book");
            
             table.setModel(DbUtils.resultSetToTableModel(rs));
             
@@ -91,16 +93,16 @@ public class TeacherDetails extends JFrame implements ActionListener{
         setVisible(true);
         
         
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+       // setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
             
     
     @Override
     public void actionPerformed(ActionEvent ae) {
         
-        if(ae.getSource()== search)
+        if(ae.getSource()==search)
         {
-            String query = "select * from teacher where tid = '"+tid.getSelectedItem()+"'";
+            String query = "select * from book where Book_Name = '"+crollno.getSelectedItem()+"'";
              try{
                 Connect c = new Connect();
                 ResultSet rs = c.s.executeQuery(query);
@@ -124,12 +126,12 @@ public class TeacherDetails extends JFrame implements ActionListener{
         else if(ae.getSource()== add)
         {
             setVisible(false);
-            new AddTeacher();
+            new AddStudent();
         }
         else if(ae.getSource()==update)
         {
              setVisible(false);
-            new UpdateTeacher();
+            new UpdateStudent();
         }
         else if(ae.getSource()==cancel)
         {
@@ -140,7 +142,7 @@ public class TeacherDetails extends JFrame implements ActionListener{
     }
     
     public static void main(String[] args) {
-        new TeacherDetails();
+        new BookList();
     }
 
     

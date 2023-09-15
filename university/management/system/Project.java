@@ -19,7 +19,7 @@ public class Project extends JFrame implements ActionListener{
         setBounds(50,20,1300,800);
         
         
-        ImageIcon i1 = new ImageIcon(ClassLoader.getSystemResource("icons/third.jpg"));
+        ImageIcon i1 = new ImageIcon(ClassLoader.getSystemResource("icons/BSGMSTU.jpg"));
         Image i2 = i1.getImage().getScaledInstance(1300, 800, Image.SCALE_DEFAULT);
         ImageIcon i3 = new ImageIcon(i2);
         JLabel image = new JLabel(i3);
@@ -28,29 +28,113 @@ public class Project extends JFrame implements ActionListener{
         
         JMenuBar mb = new JMenuBar();
         /// New Information
-        JMenu newInformation = new JMenu("New Information");
+        JMenu newInformation = new JMenu("Add New");
         mb.add(newInformation);
         
-        JMenuItem facultyInfo = new JMenuItem("New Faculty Information");
-        facultyInfo.addActionListener(this);
-        newInformation.add(facultyInfo);
+        JMenuItem employeeInfo = new JMenuItem("Employee");
+        employeeInfo.addActionListener(this);
+        newInformation.add(employeeInfo);
         
         
-        JMenuItem studentInfo = new JMenuItem("New Student Information");
+        JMenuItem studentInfo = new JMenuItem("Student");
          studentInfo.addActionListener(this);
         newInformation.add(studentInfo);
+        
+        JMenuItem teacherInfo = new JMenuItem("Teacher");
+         teacherInfo.addActionListener(this);
+        newInformation.add(teacherInfo);
         
         //Details
         JMenu details = new JMenu("View Details");
         mb.add(details);
         
-        JMenuItem facultydetails = new JMenuItem("View Faculty Details");
-        facultydetails.addActionListener(this);
-        details.add(facultydetails);
+        JMenuItem employeedetails = new JMenuItem("View Employee Details");
+        employeedetails.addActionListener(this);
+        details.add(employeedetails);
         
         JMenuItem studentdetails = new JMenuItem("View Student Details");
         studentdetails.addActionListener(this);
         details.add(studentdetails);
+        
+        JMenuItem teacherdetails = new JMenuItem("View Teacher Details");
+        teacherdetails.addActionListener(this);
+        details.add(teacherdetails);
+        
+        
+        //Faculty
+        JMenu facultyInformation = new JMenu("Faculty Details");
+        mb.add(facultyInformation);
+        
+        JMenuItem science = new JMenuItem("Science");
+        science.addActionListener(this);
+        facultyInformation.add(science);
+        
+        
+        JMenuItem arts = new JMenuItem("Arts");
+         arts.addActionListener(this);
+        facultyInformation.add(arts);
+        
+         JMenuItem engineering = new JMenuItem("Engineering");
+         engineering.addActionListener(this);
+        facultyInformation.add(engineering);
+        
+        JMenuItem commers = new JMenuItem("Commers");
+         commers.addActionListener(this);
+        facultyInformation.add(commers);
+        
+        //Exams
+        JMenu exam = new JMenu("Student Result");
+        mb.add(exam);
+        
+        JMenuItem entermarks = new JMenuItem("Enter Result"); 
+        entermarks.addActionListener(this);
+        exam.add(entermarks);
+        
+        JMenuItem examdetails = new JMenuItem("See Results");
+        examdetails.addActionListener(this);
+        exam.add(examdetails);
+        
+         //Bank Details
+        JMenu fee = new JMenu("Bank Details");
+        mb.add(fee);
+       // JMenuItem feestructure = new JMenuItem("Fee Structure"); 
+        //feestructure.addActionListener(this);
+        //fee.add(feestructure);
+        
+        JMenuItem student = new JMenuItem("Student Fee"); 
+        student.addActionListener(this);
+        fee.add(student);
+        
+        JMenuItem employee = new JMenuItem("Employee Salary"); 
+        employee.addActionListener(this);
+        fee.add(employee);
+        
+         JMenuItem teacher = new JMenuItem("Teacher Salary"); 
+        teacher.addActionListener(this);
+        fee.add(teacher);
+        
+        JMenuItem varsityaccount = new JMenuItem("Varsity Account"); 
+        varsityaccount.addActionListener(this);
+        fee.add(varsityaccount);
+        
+        
+        //JMenuItem feefrom = new JMenuItem("Student Fee Form");
+        //feefrom.addActionListener(this);
+        //fee.add(feefrom);
+        
+        
+        //Library
+        JMenu library = new JMenu("Library");
+        mb.add(library);
+        
+        JMenuItem booklist = new JMenuItem("Book List"); 
+        booklist.addActionListener(this);
+        library.add(booklist);
+        
+        JMenuItem requestbook = new JMenuItem("Request Book");
+        requestbook.addActionListener(this);
+        library.add(requestbook);
+        
         
         //Leave
         JMenu leave = new JMenu("Apple Leave");
@@ -62,6 +146,9 @@ public class Project extends JFrame implements ActionListener{
         JMenuItem studentleave = new JMenuItem("Student Leave"); 
         studentleave.addActionListener(this);
         leave.add(studentleave);
+        
+        
+        
         
         //Leave Details
         JMenu leavedetails = new JMenu("Leave Details");
@@ -75,21 +162,12 @@ public class Project extends JFrame implements ActionListener{
         studentleavedetails.addActionListener(this);
         leavedetails.add(studentleavedetails);
         
-        //Exams
-        JMenu exam = new JMenu("Examination");
-        mb.add(exam);
-        JMenuItem examdetails = new JMenuItem("Examination Results");
-        examdetails.addActionListener(this);
-        exam.add(examdetails);
         
-        JMenuItem entermarks = new JMenuItem("Enter Marks"); 
-        entermarks.addActionListener(this);
-        exam.add(entermarks);
         
         //UpdateInfo
-        JMenu update = new JMenu("Update Details");
+        JMenu update = new JMenu("Update Info");
         mb.add(update);
-        JMenuItem updatefacultyinfo = new JMenuItem("Update Faculty Details"); 
+        JMenuItem updatefacultyinfo = new JMenuItem("Update Employee Details"); 
         updatefacultyinfo.addActionListener(this);
         update.add(updatefacultyinfo);
         
@@ -97,15 +175,12 @@ public class Project extends JFrame implements ActionListener{
         updatestudentinfo.addActionListener(this);
         update.add(updatestudentinfo);
         
+         JMenuItem updateteacherinfo = new JMenuItem("Update Teacher Details");
+        updateteacherinfo.addActionListener(this);
+        update.add(updateteacherinfo);
         
-        //Fee
-        JMenu fee = new JMenu("Fee Details");
-        mb.add(fee);
-        JMenuItem feestructure = new JMenuItem("Fee Structure"); 
-        fee.add(feestructure);
         
-        JMenuItem feefrom = new JMenuItem("Student Fee Form"); 
-        fee.add(feefrom);
+       
         
         //Utility
         JMenu utility = new JMenu("Utility");
@@ -117,6 +192,15 @@ public class Project extends JFrame implements ActionListener{
         JMenuItem calc = new JMenuItem("Calculator");
         calc.addActionListener(this);
         utility.add(calc);
+        
+         //About
+        JMenu about = new JMenu("About");
+        mb.add(about);
+        
+        JMenuItem ab = new JMenuItem("About"); 
+        ab.addActionListener(this);
+        about.add(ab);
+        
         
         //Exit
         JMenu exit = new JMenu("Exit");
@@ -132,7 +216,7 @@ public class Project extends JFrame implements ActionListener{
         
         setVisible(true);
         
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        //setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
     
     
@@ -163,15 +247,19 @@ public class Project extends JFrame implements ActionListener{
                       
                   }
                }
-       else if(msg.equals("New Faculty Information"))
+       else if(msg.equals("Teacher"))
        {
            new AddTeacher();
        }
-       else if(msg.equals("New Student Information"))
+       else if(msg.equals("Student"))
        {
            new AddStudent();
        }
-       else if(msg.equals("View Faculty Details"))
+       else if(msg.equals("Employee"))
+       {
+           new AddEmploye();
+       }
+       else if(msg.equals("View Teacher Details"))
        {
            new TeacherDetails();
        }
@@ -179,6 +267,58 @@ public class Project extends JFrame implements ActionListener{
        {
            new StudentDetails();
        }
+       else if(msg.equals("View Employee Details"))
+       {
+           new EmployeeDetails();
+       }
+       
+        else if(msg.equals("Enter Result"))
+       {
+           new EnterMarks();
+       }
+       
+       else if(msg.equals("See Results"))
+       {
+           new ExaminationDetails();
+       }
+       
+        else if(msg.equals("Fee Structure"))
+       {
+           new FeeStructure();
+       }
+        else if(msg.equals("Student Fee"))
+       {
+           new StudentBankDetails();
+       }
+       
+       else if(msg.equals("Employee Salary"))
+       {
+           new EmployeeBankDetails();
+       }
+        else if(msg.equals("Teacher Salary"))
+       {
+           new TeacherBankDetails();
+       }
+        else if(msg.equals("Varsity Account"))
+       {
+           new VarsityAccountDetails();
+       }
+        
+        else if(msg.equals("Student Fee Form"))
+       {
+           new StudentFeeForm();
+       }
+        
+         else if(msg.equals("Book List"))
+       {
+           new BookList();
+       }
+         
+          else if(msg.equals("Request Book"))
+       {
+           new RequestBookDetails();
+       }
+       
        else if(msg.equals("Faculty Leave"))
        {
            new TeacherLeave();
@@ -196,7 +336,7 @@ public class Project extends JFrame implements ActionListener{
        {
            new StudentLeaveDetails();
        }
-       else if(msg.equals("Update Faculty Details"))
+       else if(msg.equals("Update Teacher Details"))
        {
            new UpdateTeacher();
        }
@@ -204,16 +344,21 @@ public class Project extends JFrame implements ActionListener{
        {
            new UpdateStudent();
        }
-       
-        else if(msg.equals("Enter Marks"))
+       else if(msg.equals("Update Employee Details"))
        {
-           new EnterMarks();
+           new UpdateEmployee();
        }
        
-       else if(msg.equals("Examination Results"))
+       
+      
+       
+       else if(msg.equals("About"))
        {
-           new ExaminationDetails();
+           new About();
        }
+       
+       
+       
        
        
     }

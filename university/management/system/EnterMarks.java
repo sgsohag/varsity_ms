@@ -34,7 +34,7 @@ public class EnterMarks extends JFrame implements ActionListener{
         heading.setFont(new Font("serif", Font.BOLD, 20));
         add(heading);
 
-        JLabel lblrollnumber = new JLabel("Select Roll Number");
+        JLabel lblrollnumber = new JLabel("Select Student ID");
         lblrollnumber.setBounds(50, 70, 150, 20);
         lblrollnumber.setFont(new Font("serif", Font.PLAIN, 18));
         add(lblrollnumber);
@@ -47,7 +47,7 @@ public class EnterMarks extends JFrame implements ActionListener{
             Connect c = new Connect();
             ResultSet rs = c.s.executeQuery("select * from student");
             while (rs.next()) {
-                crollno.add(rs.getString("rollno"));
+                crollno.add(rs.getString("sid"));
             }
         } catch (Exception e) {
             e.printStackTrace();
