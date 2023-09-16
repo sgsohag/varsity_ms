@@ -31,7 +31,7 @@ public class TeacherSalaryForm extends JFrame implements ActionListener {
         setLayout(null);
         getContentPane().setBackground(Color.white);
         
-        ImageIcon i1 = new ImageIcon(ClassLoader.getSystemResource("icons/fee.jpg"));
+        ImageIcon i1 = new ImageIcon(ClassLoader.getSystemResource("icons/fifth.jpg"));
         Image i2 = i1.getImage().getScaledInstance(500, 300, Image.SCALE_DEFAULT);
         ImageIcon i3 = new ImageIcon(i2);
         JLabel image = new JLabel(i3);
@@ -84,7 +84,7 @@ public class TeacherSalaryForm extends JFrame implements ActionListener {
             String query = "select * from teacher where tid = '" + crollno.getSelectedItem() + "'";
             ResultSet rs = c.s.executeQuery(query);
             while (rs.next()) {
-                labelname.setText(rs.getString("name"));
+                labelname.setText(rs.getString("namee"));
                 labelfname.setText(rs.getString("fname"));
                 
             }
@@ -101,7 +101,7 @@ public class TeacherSalaryForm extends JFrame implements ActionListener {
                     String query = "select * from teacher where tid = '" + crollno.getSelectedItem() + "'";
                     ResultSet rs = c.s.executeQuery(query);
                     while (rs.next()) {
-                        labelname.setText(rs.getString("name"));
+                        labelname.setText(rs.getString("namee"));
                         labelfname.setText(rs.getString("fname"));
                         
                     }
@@ -160,11 +160,11 @@ public class TeacherSalaryForm extends JFrame implements ActionListener {
         
         
         
-        update = new JButton("Update");
-        update.setBounds(30, 380, 100, 25);
-        update.setFont(new Font("serif", Font.BOLD, 16));
-        update.addActionListener(this);
-        add(update);
+        //update = new JButton("Update");
+        //update.setBounds(30, 380, 100, 25);
+       // update.setFont(new Font("serif", Font.BOLD, 16));
+        //update.addActionListener(this);
+        //add(update);
         
         
          pay = new JButton("Pay Fee");
@@ -206,7 +206,7 @@ public class TeacherSalaryForm extends JFrame implements ActionListener {
              
              try{
                 Connect c = new Connect();
-                ResultSet rs = c.s.executeQuery("select * from teachersalary where sid = '"+course+"'");
+                ResultSet rs = c.s.executeQuery("select * from teachersalary where tid = '"+course+"'");
                while(rs.next())
                {
                    labeltotal.setText(rs.getString(semester));

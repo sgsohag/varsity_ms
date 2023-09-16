@@ -34,6 +34,10 @@ public class AddStudent extends JFrame implements ActionListener{
         
         tfnameb = new JTextField();
         tfnameb.setBounds(200, 100, 150, 30);
+         Font banglaFont=new Font("Kalpurush", Font.PLAIN, 16);
+        tfnameb.setFont(banglaFont); 
+        tfnameb.setFont(banglaFont); 
+        tfnameb.setFont(banglaFont);
         add(tfnameb);
         
         JLabel lblnamee = new JLabel("Name(English)");

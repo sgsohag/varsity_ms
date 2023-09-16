@@ -19,7 +19,7 @@ public class About extends JFrame {
         setLayout(null);
         getContentPane().setBackground(Color.white);
         
-        ImageIcon i1 = new ImageIcon(ClassLoader.getSystemResource("icons/about.jpg"));
+        ImageIcon i1 = new ImageIcon(ClassLoader.getSystemResource("icons/sohag.jpg"));
         Image i2 = i1.getImage().getScaledInstance(300, 200, Image.SCALE_DEFAULT);
         ImageIcon i3 = new ImageIcon(i2);
         JLabel image = new JLabel(i3);
@@ -31,13 +31,13 @@ public class About extends JFrame {
         heading.setFont(new Font("serif", Font.BOLD, 30));
         add(heading);
         
-        JLabel name = new JLabel("Developed By: Sohag Gain");
-        name.setBounds(70, 220, 500, 40);
+        JLabel name = new JLabel("Developed By: Sohag Gain & Smrity Nur");
+        name.setBounds(70, 220, 600, 40);
         name.setFont(new Font("serif", Font.BOLD, 30));
         add(name);
         
         
-        JLabel rollno = new JLabel("Roll Number: 2011128");
+        JLabel rollno = new JLabel("Roll Number: 20111128 & 20211125");
         rollno.setBounds(70, 280, 500, 40);
         rollno.setFont(new Font("serif", Font.PLAIN, 30));
         add(rollno);

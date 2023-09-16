@@ -70,13 +70,13 @@ public class TeacherBankDetails extends JFrame implements ActionListener{
         add.addActionListener(this);
         add(add);
         
-         update = new JButton("Update");
-        update.setBounds(320, 70, 80, 20);
-        update.addActionListener(this);
-        add(update);
+         //update = new JButton("Update");
+        //update.setBounds(320, 70, 80, 20);
+        //update.addActionListener(this);
+       // add(update);
         
          cancel = new JButton("Cancel");
-        cancel.setBounds(420, 70, 80, 20);
+        cancel.setBounds(320, 70, 80, 20);
         cancel.addActionListener(this);
         add(cancel);
         
@@ -124,7 +124,7 @@ public class TeacherBankDetails extends JFrame implements ActionListener{
         else if(ae.getSource()== add)
         {
             setVisible(false);
-            new AddStudent();
+            new TeacherSalaryForm();
         }
         else if(ae.getSource()==update)
         {
