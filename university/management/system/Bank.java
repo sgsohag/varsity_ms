@@ -30,10 +30,13 @@ public class Bank extends JFrame implements ActionListener{
         /// New Information
         JMenu varsityaccount1 = new JMenu("Varsity Account");
         mb.add(varsityaccount1);
-        
         JMenuItem varsityaccount = new JMenuItem("Varsity Account"); 
         varsityaccount.addActionListener(this);
         varsityaccount1.add(varsityaccount);
+        
+        JMenuItem varsityaccountdetails = new JMenuItem("Varsity Account Details"); 
+        varsityaccountdetails.addActionListener(this);
+        varsityaccount1.add(varsityaccountdetails);
         
         //Details
         JMenu details = new JMenu("View Details");
@@ -215,11 +218,14 @@ public class Bank extends JFrame implements ActionListener{
        {
            new TeacherSalaryForm();
        }
-        else if(msg.equals("Varsity Account"))
+        else if(msg.equals("Varsity Account Details"))
        {
            new VarsityAccountDetails();
        }
-        
+         else if(msg.equals("Varsity Account"))
+       {
+           new VarsityAccount();
+       }
          else if(msg.equals("Student Fee Details"))
        {
            new StudentBankDetails();

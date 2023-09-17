@@ -42,17 +42,17 @@ public class Teacher extends JFrame implements ActionListener{
         JMenu details = new JMenu("View Details");
         mb.add(details);
         
-        JMenuItem employeedetails = new JMenuItem("View Employee Details");
-        employeedetails.addActionListener(this);
-        details.add(employeedetails);
+        //JMenuItem employeedetails = new JMenuItem("View Employee Details");
+        //employeedetails.addActionListener(this);
+        //details.add(employeedetails);
         
         JMenuItem studentdetails = new JMenuItem("View Student Details");
         studentdetails.addActionListener(this);
         details.add(studentdetails);
         
-        JMenuItem teacherdetails = new JMenuItem("View Teacher Details");
-        teacherdetails.addActionListener(this);
-        details.add(teacherdetails);
+        //JMenuItem teacherdetails = new JMenuItem("View Teacher Details");
+        //teacherdetails.addActionListener(this);
+        //details.add(teacherdetails);
         
         
         //Faculty

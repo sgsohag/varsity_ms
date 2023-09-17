@@ -11,7 +11,7 @@ public class EmployeeDetails extends JFrame implements ActionListener{
     
     Choice crollno;
     JTable table;
-    JButton search, print,update,add,cancel;
+    JButton search, print,update,add,cancel,delete;
     
     EmployeeDetails()
     {
@@ -75,8 +75,13 @@ public class EmployeeDetails extends JFrame implements ActionListener{
         update.addActionListener(this);
         add(update);
         
+         delete = new JButton("Delete");
+        delete.setBounds(420, 70, 80, 20);
+        delete.addActionListener(this);
+        add(delete);
+        
          cancel = new JButton("Cancel");
-        cancel.setBounds(420, 70, 80, 20);
+        cancel.setBounds(520, 70, 80, 20);
         cancel.addActionListener(this);
         add(cancel);
         
@@ -131,6 +136,23 @@ public class EmployeeDetails extends JFrame implements ActionListener{
              setVisible(false);
             new UpdateEmployee();
         }
+        
+         else if(ae.getSource()==delete)
+        {
+             try{
+                String query = "delete from employee where emp = '"+crollno.getSelectedItem()+"'";
+                
+                Connect con= new Connect();
+                con.s.executeUpdate(query);
+                
+                JOptionPane.showMessageDialog(null, "Employee Delete Successfully");
+                
+                setVisible(false);
+            } catch (Exception c){
+                c.printStackTrace();
+            }
+        }
+        
         else if(ae.getSource()==cancel)
         {
              setVisible(false);
